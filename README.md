@@ -6,7 +6,7 @@
 </p>
 
 ## GETTING STARTED
-https://scrape-the-news.herokuapp.com/
+https://secret-shelf-67672.herokuapp.com/
 
 ## TECHNOLOGY USED
   * [express](https://www.npmjs.com/package/express)
