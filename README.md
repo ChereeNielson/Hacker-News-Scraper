@@ -33,4 +33,4 @@ Hacker News Scrapper is a simple, easily navigatable site that allows the user t
 <img align="center" src="/public/images/GetAJob.gif" width="100%"/>
 </p>
 
-[Hack the Planet!](https://github.com/ChereeNielson/Hacker-News-Scraper)
+## [Hack the Planet!](https://github.com/ChereeNielson/Hacker-News-Scraper)
