@@ -29,8 +29,8 @@ https://scrape-the-news.herokuapp.com/
 Hacker News Scrapper is a simple, easily navigatable site that allows the user to scrape current news article from [Hacker News](https://news.ycombinator.com/). The site uses Cheerio to scrape news and then store the data in MongoDB. Users can save, leave notes and delete articles based on their preferences. 
 * To view a live version of the site please visit https://secret-shelf-67672.herokuapp.com/
 
-[Hack the Planet!](https://github.com/ChereeNielson/Hacker-News-Scraper)
-
 <p align="center">
 <img align="center" src="/public/images/GetAJob.gif" width="100%"/>
 </p>
+
+[Hack the Planet!](https://github.com/ChereeNielson/Hacker-News-Scraper)
