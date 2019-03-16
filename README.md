@@ -15,6 +15,7 @@
   * [cheerio](https://www.npmjs.com/package/cheerio)
   * [request](https://www.npmjs.com/package/request)
   * [morgan](https://www.npmjs.com/package/morgan)
+  * [twitter](https://twitter.com/Hackers_bot)
   * [heroku](https://secret-shelf-67672.herokuapp.com/)
 
 ## APIs
