@@ -1,5 +1,5 @@
 # Hack The Planet!
-###### "All the News That's Fit to Scrape"
+#### "All the News That's Fit to Scrape"
 
 <p align="center">
 <img align="center" src="/public/images/HackThePlanet.gif" width="100%"/>
