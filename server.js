@@ -5,7 +5,6 @@
 // =============================================================
 const express = require("express"),
       exphbs = require("express-handlebars"),
-      bodyParser = require("body-parser"),
       logger = require("morgan"),
       mongoose = require("mongoose"),
       methodOverride = require("method-override");
@@ -16,10 +15,10 @@ const PORT = process.env.PORT || 8000;
 let app = express();
 
 app
-    .use(bodyParser.json())
-    .use(bodyParser.urlencoded({ extended:true }))
-    .use(bodyParser.text())
-    .use(bodyParser.json({ type: "application/vnd.api+json" }))
+    .use(express.json())
+    .use(express.urlencoded({ extended:true }))
+    .use(express.text())
+    .use(express.json({ type: "application/vnd.api+json" }))
     .use(methodOverride("_method"))
     .use(logger("dev"))
     .use(express.static(__dirname + "/public"))
