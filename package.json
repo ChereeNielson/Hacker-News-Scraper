@@ -1,21 +1,22 @@
 {
   "name": "articalscraper",
   "version": "1.0.0",
-  "description": "",
+  "description": "<p align=\"center\">\r <img align=\"center\" src=\"/public/images/HackThePlanet.gif\" width=\"100%\"/>\r </p>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sayex/articalscraper.git"
+    "url": "git+https://github.com/ChereeNielson/Hacker-News-Scraper.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Cheree Nielson",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sayex/articalscraper/issues"
+    "url": "https://github.com/ChereeNielson/Hacker-News-Scraper/issues"
   },
-  "homepage": "https://github.com/sayex/articalscraper#readme",
+  "homepage": "https://github.com/ChereeNielson/Hacker-News-Scraper#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
