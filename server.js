@@ -1,17 +1,25 @@
 "use strict";
 
-
-// dependencies
-// =============================================================
+// NODE DEPENDENCIES
+// ============================================================= //
 const express = require("express"),
       exphbs = require("express-handlebars"),
       logger = require("morgan"),
       mongoose = require("mongoose"),
-      methodOverride = require("method-override");
+    //   methodOverride = require("method-override");
 
-// set up express app
-// =============================================================
-const PORT = process.env.PORT || 8000;
+
+// OUR SCRAPING TOOLS
+// ============================================================= //
+// Axios is a promised-based http library, similar to jQuery's Ajax method
+// It works on the client and on the server
+// let axios = require("axios");
+// let cheerio = require("cheerio");
+
+
+// SET UP AND INITIALIZE EXPRESS APP
+// ============================================================= //
+const PORT = process.env.PORT || 3000;
 let app = express();
 
 app
@@ -19,35 +27,37 @@ app
     .use(express.urlencoded({ extended:true }))
     .use(express.text())
     .use(express.json({ type: "application/vnd.api+json" }))
-    .use(methodOverride("_method"))
+    // .use(methodOverride("_method"))
     .use(logger("dev"))
     .use(express.static(__dirname + "/public"))
     .engine("handlebars", exphbs({ defaultLayout: "main" }))
     .set("view engine", "handlebars")
     .use(require("./controllers"));
 
-// configure mongoose and start the server
-// =============================================================
-// set mongoose to leverage promises
+
+// CONFIGURE MONGOOSE AND START THE SERVER
+// ============================================================= //
+// Set Mongoose to leverage promises
 mongoose.Promise = Promise;
 
 const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
 
-// Database configuration with mongoose
+// Database configuration with Mongoose
 mongoose.set("useCreateIndex", true)
+// Connect to the Mongo DB
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
-// Show any mongoose errors
+// Show any Mongoose errors
 db.on("error", function(error) {
     console.log("Mongoose Error: ", error);
 });
 
-// Once logged in to the db through mongoose, log a success message
+// Once logged in to the DB through Mongoose, log a success message
 db.once("open", function() {
-    console.log("Mongoose connection successful.");
-    // start the server, listen on port 3000
+    console.log("Mongoose connection successful");
+    // Start the Server
     app.listen(PORT, function() {
         console.log("App running on port " + PORT);
     });
