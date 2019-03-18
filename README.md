@@ -36,4 +36,4 @@ Hacker News Scrapper is a simple, easily navigatable site that allows the user t
 
 ## Author
 
-* **Cheree Nielson** - [Hacker News Scraper Repo](https://github.com/ChereeNielson/Hacker-News-Scraper)
+* **Cheree Nielson** - Full Stack Developer - [Cheree Nielson](https://github.com/ChereeNielson)
