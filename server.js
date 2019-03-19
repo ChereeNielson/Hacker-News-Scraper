@@ -1,3 +1,5 @@
+// https://www.w3schools.com/js/js_strict.asp
+// "use strict" helps you write cleaner code, preventing you from using undeclared variables //
 "use strict";
 
 // NODE DEPENDENCIES
@@ -17,9 +19,13 @@ const express = require("express"),
 // let cheerio = require("cheerio");
 
 
-// SET UP AND INITIALIZE EXPRESS APP
+// SET UP THE PORT
 // ============================================================= //
 const PORT = process.env.PORT || 3000;
+
+
+// SET UP AND INITIALIZE EXPRESS APP
+// ============================================================= //
 let app = express();
 
 app
@@ -40,10 +46,12 @@ app
 // Set Mongoose to leverage promises
 mongoose.Promise = Promise;
 
+// If deployed, use the deployed database. Otherwise use the local newsArticles database
 const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
 
 // Database configuration with Mongoose
 mongoose.set("useCreateIndex", true)
+
 // Connect to the Mongo DB
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
@@ -58,9 +66,7 @@ db.on("error", function(error) {
 db.once("open", function() {
     console.log("Mongoose connection successful");
     // Start the Server
-    app.listen(PORT, function() {
-        console.log("App running on port " + PORT);
-    });
+    app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
 });
 
 module.exports = app;
