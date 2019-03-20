@@ -4,8 +4,10 @@
   "description": "<p align=\"center\">\r <img align=\"center\" src=\"/public/images/HackThePlanet.gif\" width=\"100%\"/>\r </p>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint **/*.js --quiet",
+    "fix": "eslint --fix .",
+    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
   "repository": {
     "type": "git",

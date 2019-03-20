@@ -4,7 +4,7 @@ html, body {
 
 body {
     padding: 70px;
-    background-color: #fc6621;
+    background: url("../images/background.jpg") repeat;
 }
 
 #navbar{

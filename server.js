@@ -5,52 +5,49 @@
 // NODE DEPENDENCIES
 // ============================================================= //
 const express = require("express"),
-      exphbs = require("express-handlebars"),
-      logger = require("morgan"),
-      mongoose = require("mongoose"),
-    //   methodOverride = require("method-override");
+  exphbs = require("express-handlebars"),
+  logger = require("morgan"),
+  mongoose = require("mongoose"),
+  // OUR SCRAPING TOOLS
+  // ============================================================= //
+  // Axios is a promised-based http library, similar to jQuery's Ajax method
+  // It works on the client and on the server
+  // let axios = require("axios");
+  // let cheerio = require("cheerio");
 
-
-// OUR SCRAPING TOOLS
-// ============================================================= //
-// Axios is a promised-based http library, similar to jQuery's Ajax method
-// It works on the client and on the server
-// let axios = require("axios");
-// let cheerio = require("cheerio");
-
-
-// SET UP THE PORT
-// ============================================================= //
-const PORT = process.env.PORT || 3000;
-
+  // SET UP THE PORT
+  // ============================================================= //
+  PORT = process.env.PORT || 3000;
 
 // SET UP AND INITIALIZE EXPRESS APP
 // ============================================================= //
 let app = express();
 
 app
-    .use(express.json())
-    .use(express.urlencoded({ extended:true }))
-    .use(express.text())
-    .use(express.json({ type: "application/vnd.api+json" }))
-    // .use(methodOverride("_method"))
-    .use(logger("dev"))
-    .use(express.static(__dirname + "/public"))
-    .engine("handlebars", exphbs({ defaultLayout: "main" }))
-    .set("view engine", "handlebars")
-    .use(require("./controllers"));
+  .use(express.urlencoded({ extended: true }))
+  .use(express.json())
+  // .use(express.text())
+  //   .use(express.json({ type: "application/vnd.api+json" }))
+  .use(logger("dev"))
+  .use(express.static("public"))
+  .engine("handlebars", exphbs({ defaultLayout: "main" }))
+  .set("view engine", "handlebars");
 
+//routes
+require("./routes/apiRoutes")(app);
+//   .use(require("./routes/htmlRoutes")(app));
 
-// CONFIGURE MONGOOSE AND START THE SERVER
+// CONFIGURE MONGOOSE AND START THE SERVER - move to my routes folders
 // ============================================================= //
 // Set Mongoose to leverage promises
 mongoose.Promise = Promise;
 
 // If deployed, use the deployed database. Otherwise use the local newsArticles database
-const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
+const dbURI =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
 
 // Database configuration with Mongoose
-mongoose.set("useCreateIndex", true)
+mongoose.set("useCreateIndex", true);
 
 // Connect to the Mongo DB
 mongoose.connect(dbURI, { useNewUrlParser: true });
@@ -59,14 +56,14 @@ const db = mongoose.connection;
 
 // Show any Mongoose errors
 db.on("error", function(error) {
-    console.log("Mongoose Error: ", error);
+  console.log("Mongoose Error: ", error);
 });
 
 // Once logged in to the DB through Mongoose, log a success message
 db.once("open", function() {
-    console.log("Mongoose connection successful");
-    // Start the Server
-    app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
+  console.log("Mongoose connection successful");
+  // Start the Server
+  app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
 });
 
 module.exports = app;
