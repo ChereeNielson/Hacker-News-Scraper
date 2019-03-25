@@ -1,5 +1,41 @@
-
-
-    <div class="container" id="wrapper">
-        {{{body}}}
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/hacker-news-logo-34f049826f4bfaff-512x512.png">
+           <a class="navbar-brand" href="/">Hacker News</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+      
+                    <a class="nav-item nav-link {{#if scrape}} {{scrape}} {{/if}} " href="/scrape">Scrape New Articles</a>
+                    <a class="nav-item nav-link {{#if article}} {{article}} {{/if}}" href="/saved">Saved Articles</a>
+      
+                </div>
+            </div>
+        </div>
     </div>
+</nav>
+
+            {{!-- <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/saved">Saved Articles</a></li>
+            </ul>
+            <a class="btn btn-primary navbar-btn" id="scrapeBtn" href="/api/article/scrape">Scrape New Articles!</a> --}}
+
+            {{!-- <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+                <tbody>
+                    <tr>
+                        <td style="width:18px; padding-right:4px">
+                            <a href="https://news.ycombinator.com">
+                            <img src="../../public/images/HN.jpg" width="18" height="18" style="border:1px white solid;">
+                            </a>
+                        </td>
+                        <td style="line-height:12pt; height:10px;">
+                            <span class="pagetop">
+                                <a class="navbar-brand" href="/">Hacker News</a>
+                            </span>
+                    </tr>
+                </tbody>
+            </table> --}}
