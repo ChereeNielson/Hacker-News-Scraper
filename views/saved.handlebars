@@ -1,8 +1,24 @@
 {{> header article="active"}}
 
 <div class="jumbotron">
-    {{#each data}}
-    <div class="row">
+{{#each data}}
+    <ul>
+        <li>{{this.title}}</li>
+        <li><a href="{{this.link}}">{{this.link}}</a></li>
+        <button class="buttonNote btn btn-primary" data-id="{{this._id}}">Notes</button>
+        <button class="buttonDeleteFavorite btn btn-danger" data-id="{{this._id}}">Remove from Saved</button>
+    <hr>
+    </ul>
+{{/each}}
+</div>
+
+{{> notes}}
+
+
+
+
+
+    {{!-- <div class="row">
         <div class="col-md-12">
             <h1>{{this.title}}</h1>
         </div>
@@ -30,13 +46,4 @@
             </div>
             
 {{> notes}}
-</div>   
-            
-        {{/each}}
-       
-    {{else}}
-        <div class="well">
-            <h4>There are no saved articles.</h4>
-        </div>
-    {{/if}}
-</div>
+</div>    --}}
