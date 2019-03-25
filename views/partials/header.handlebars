@@ -2,8 +2,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <img src="../../public/images/HN.jpg">
-           <a class="navbar-brand" href="/">Hacker News</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/">Hacker News</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/saved">Saved Articles</a></li>
+            
+        </ul>
+        <a class="btn btn-primary navbar-btn" id="scrapeBtn" href="/api/articles/scrape">Scrape New Articles!</a>
+
+            {{!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -13,8 +21,7 @@
                     <a class="nav-item nav-link {{#if article}} {{article}} {{/if}}" href="/saved">Saved Articles</a>
       
                 </div>
-            </div>
-        </div>
+            </div> --}}
     </div>
 </nav>
 
