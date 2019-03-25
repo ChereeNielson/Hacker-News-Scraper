@@ -1,8 +1,10 @@
+{{> header article="active"}}
+
 <div class="jumbotron">
+    {{#each data}}
     <div class="row">
         <div class="col-md-12">
             <h1>{{this.title}}</h1>
-            <h3>{{this.subtitle}}</h3>
         </div>
     </div>
 </div>
@@ -13,7 +15,7 @@
             <div class="well">
                 <div class="row">
                     <div class="col col-md-8">
-                        <h4><a href="{{this.link}}">{{this.text}}</a></h4>
+                        <h4><a href="{{this.link}}">{{this.title}}</a></h4>
                     </div>
                     <div class="col col-md-2">
                         <a id="btn"class="btn btn-success" href="#" data-toggle="modal" data-target="#{{this.id}}">Notes</a>
@@ -27,7 +29,7 @@
                 
             </div>
             
-{{> content/modal}}
+{{> notes}}
 </div>   
             
         {{/each}}
