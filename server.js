@@ -4,66 +4,56 @@
 
 // NODE DEPENDENCIES
 // ============================================================= //
-const express = require("express"),
-  exphbs = require("express-handlebars"),
-  logger = require("morgan"),
-  mongoose = require("mongoose"),
-  // OUR SCRAPING TOOLS
-  // ============================================================= //
-  // Axios is a promised-based http library, similar to jQuery's Ajax method
-  // It works on the client and on the server
-  // let axios = require("axios");
-  // let cheerio = require("cheerio");
+const express = require("express");
+const exphbs = require("express-handlebars");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-  // SET UP THE PORT
-  // ============================================================= //
-  PORT = process.env.PORT || 3000;
+// SET UP THE PORT
+// ============================================================= //
+const PORT = process.env.PORT || 3000;
 
 // SET UP AND INITIALIZE EXPRESS APP
 // ============================================================= //
 let app = express();
 
-app
-  .use(express.urlencoded({ extended: true }))
-  .use(express.json())
-  // .use(express.text())
-  //   .use(express.json({ type: "application/vnd.api+json" }))
-  .use(logger("dev"))
-  .use(express.static("public"))
-  .engine("handlebars", exphbs({ defaultLayout: "main" }))
-  .set("view engine", "handlebars");
-
-//routes
-require("./routes/apiRoutes")(app);
-//   .use(require("./routes/htmlRoutes")(app));
-
-// CONFIGURE MONGOOSE AND START THE SERVER - move to my routes folders
+// CONFIGURE MONGOOSE AND START THE SERVER
 // ============================================================= //
-// Set Mongoose to leverage promises
-mongoose.Promise = Promise;
-
-// If deployed, use the deployed database. Otherwise use the local newsArticles database
 const dbURI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/newsArticles";
-
-// Database configuration with Mongoose
-mongoose.set("useCreateIndex", true);
 
 // Connect to the Mongo DB
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
-// Show any Mongoose errors
+// Show any "mongoose' errors
 db.on("error", function(error) {
   console.log("Mongoose Error: ", error);
 });
-
 // Once logged in to the DB through Mongoose, log a success message
 db.once("open", function() {
   console.log("Mongoose connection successful");
-  // Start the Server
-  app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
 });
+
+// Use "morgan" logger for logging requests
+app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Make "public" a static folder
+app.use(express.static("public"));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// ROUTES
+// ============================================================= //
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+
+// START THE SERVER
+// ============================================================= //
+app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
 
 module.exports = app;

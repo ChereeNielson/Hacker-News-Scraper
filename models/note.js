@@ -13,10 +13,6 @@ const NoteSchema = new Schema({
   article: {
     type: Schema.Types.ObjectId,
     ref: "Article"
-  },
-  date: {
-    type: Date,
-    default: Date.now
   }
 });
 

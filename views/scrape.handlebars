@@ -1,0 +1,11 @@
+{{> header scrape="active" }}
+<div class="container border">
+{{#each data}}
+    <ul class="bg-light" >
+        <li>{{this.title}}</li>
+        <li><a href="{{this.link}}">{{this.link}}</a></li>
+        <button class="buttonArticles btn btn-success" data-title="{{this.title}}" data-link="{{this.link}}">Add to Saved</button>
+    <hr>
+    </ul>
+{{/each}}
+</div>

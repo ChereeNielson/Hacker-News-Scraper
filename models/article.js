@@ -19,29 +19,18 @@ const ArticleSchema = new Schema({
   // `save` article or not
   favorite: {
     type: Boolean,
-    required: true,
     default: false
   },
   // `delete` article or not
   delete: {
     type: Boolean,
-    required: true,
     default: false
   },
   // `date` is set when added to database
   date: {
     type: Date,
     default: Date.now
-  },
-  // `note` is an array that stores a Note id
-  note: [
-    {
-      type: Schema.Types.ObjectId,
-      // the ref property links the ObjectId to the `Note` model
-      ref: "Note",
-      require: false
-    }
-  ]
+  }
 });
 
 // This creates our model from the above schema, using Mongoose's model method
