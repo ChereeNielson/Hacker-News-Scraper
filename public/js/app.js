@@ -43,7 +43,7 @@ $(function() {
   });
 
   $(document).on("click", ".noteDelete", function() {
-    var id = $(this).data("id");
+    let id = $(this).data("id");
 
     $.ajax("/api/notes/" + id, {
       type: "DELETE"
@@ -54,11 +54,11 @@ $(function() {
   });
 
   $(document).on("click", ".noteSave", function() {
-    var id = $(this).data("id");
-    var noteVal = $("#message-text")
+    let id = $(this).data("id");
+    let noteVal = $("#message-text")
       .val()
       .trim();
-    var newNote = {
+    let newNote = {
       text: noteVal
     };
 
@@ -66,10 +66,10 @@ $(function() {
       type: "POST",
       data: newNote
     }).then(function(response) {
-      var id = response.article;
-      var text = response.text;
+      let id = response.article;
+      let text = response.text;
 
-      var newNote = `<li data-id=${id}>${text} <button type="button" class="btn btn-danger btn-sm noteDelete" data-id=${id}>x</button>
+      let newNote = `<li data-id=${id}>${text} <button type="button" class="btn btn-danger btn-sm noteDelete" data-id=${id}>x</button>
       </li>`;
 
       $("#ulNotes").append(newNote);
