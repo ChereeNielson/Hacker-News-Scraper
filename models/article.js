@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
 
 // Create Schema for DB and save a reference to the Schema constructor
 const Schema = mongoose.Schema;
@@ -17,7 +18,7 @@ const ArticleSchema = new Schema({
     required: true
   },
   // `save` article or not
-  favorite: {
+  save: {
     type: Boolean,
     default: false
   },
@@ -30,11 +31,21 @@ const ArticleSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  notes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Note",
+      required: false
+    }
+  ]
 });
 
+// Plugin to make articles unique
+ArticleSchema.plugin(uniqueValidator);
+
 // This creates our model from the above schema, using Mongoose's model method
-let Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model("Article", ArticleSchema);
 
 // Export the Article model
 module.exports = Article;
