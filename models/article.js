@@ -18,12 +18,12 @@ const ArticleSchema = new Schema({
     required: true
   },
   // `save` article or not
-  save: {
+  saved: {
     type: Boolean,
     default: false
   },
   // `delete` article or not
-  delete: {
+  deleted: {
     type: Boolean,
     default: false
   },

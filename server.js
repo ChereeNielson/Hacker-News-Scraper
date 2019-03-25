@@ -6,6 +6,7 @@
 // ============================================================= //
 const express = require("express");
 const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
@@ -27,7 +28,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
-// Show any "mongoose' errors
+// Show any "mongoose" errors
 db.on("error", function(error) {
   console.log("Mongoose Error: ", error);
 });
@@ -35,6 +36,12 @@ db.on("error", function(error) {
 db.once("open", function() {
   console.log("Mongoose connection successful");
 });
+
+// Use "body-parser" for middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Use "morgan" logger for logging requests
 app.use(logger("dev"));
