@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
 
 // Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
@@ -16,7 +17,10 @@ const NoteSchema = new Schema({
   }
 });
 
-// This creates our model from the above schema, using Mongoose's model method
+// Add unique-validator plugin
+NoteSchema.plugin(uniqueValidator);
+
+// This creates our model from the above NoteSchema, using Mongoose's model method
 const Note = mongoose.model("Note", NoteSchema);
 
 // Export the Note model
