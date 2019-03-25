@@ -25,6 +25,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "mongoose": "^5.4.19",
+    "mongoose-unique-validator": "^2.0.2",
     "morgan": "^1.9.1",
     "travis-ci": "^2.2.0"
   },
