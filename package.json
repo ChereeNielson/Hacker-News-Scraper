@@ -14,7 +14,7 @@
     "url": "git+https://github.com/ChereeNielson/Hacker-News-Scraper.git"
   },
   "author": "Cheree Nielson",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/ChereeNielson/Hacker-News-Scraper/issues"
   },

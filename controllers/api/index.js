@@ -5,14 +5,18 @@
 // NODE DEPENDENCIES
 // ============================================================= //
 const express = require("express"),
-const router = express.Router(),
-const request = require("request"),
-const cheerio = require("cheerio"),
-const Article = require("../../models/article"),
-const Note = require("../../models/note");
+  router = express.Router(),
+  request = require("request"),
+  cheerio = require("cheerio"),
+  Article = require("../../models/article"),
+  Note = require("../../models/note");
 
 router.get("/", function(req, res) {
-    res.status(200).send("<a href=\'/api/articles/\'>articles</a><br><a href=\'/api/notes/\'>notes</a>");
+  res
+    .status(200)
+    .send(
+      "<a href='/api/articles/'>articles</a><br><a href='/api/notes/'>notes</a>"
+    );
 });
 
 router.use("/articles", require("./articles"));
